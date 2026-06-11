@@ -1,15 +1,66 @@
 <main class="main">
   <h1>{{ title() }}</h1>
-  <p>Welcome {{ name }}</p>
+  <p [appHighlight]="'lightblue'">Welcome {{ name }}</p>
 
   <button (click)="handleClick()">Click Me</button>
 
-  <img [src]="imgSrc" alt="Angular Logo" class="logo">
-<br>
-<br>
-  <input type="text" placeholder="Enter your name" [(ngModel)]="inputValue">
+  <img [src]="imgSrc" alt="Angular Logo" class="logo" />
+  <br />
+  <br />
 
-  <p>You entered: {{ inputValue }}</p>
+  <input type="text" placeholder="Enter your name" [(ngModel)]="inputValue" />
+
+  @if (inputValue) {
+    <p>You entered: {{ inputValue }}</p>
+  }
+
+  @if (isVisible) {
+    <p>This paragraph is conditionally visible based on the value of isVisible.</p>
+  }
+
+  <div>
+    <h2>Person List</h2>
+    <ul>
+      @for (person of personArray; track $index) {
+        <li>{{ person.name }} - {{ person.age }} years old</li>
+      }
+    </ul>
+  </div>
+
+  @switch (today) {
+    @case (0) {
+      <p>It's Sunday!</p>
+    }
+    @case (1) {
+      <p>It's Monday!</p>
+    }
+    @case (2) {
+      <p>It's Tuesday!</p>
+    }
+    @case (3) {
+      <p>It's Wednesday!</p>
+    }
+    @case (4) {
+      <p>It's Thursday!</p>
+    }
+    @case (5) {
+      <p>It's Friday!</p>
+    }
+    @case (6) {
+      <p>It's Saturday!</p>
+    }
+    @default {
+      <p>Invalid day!</p>
+    }
+  }
+
+  <h2 [ngClass]="{ 'text-primary': isVisible, 'text-secondary': !isVisible }">Person List</h2>
+
+  <h3 [ngStyle]="{ 'background-color': isVisible ? 'yellow' : 'orange' }">
+    Person List with Index
+  </h3>
 </main>
+
+<app-about></app-about>
 
 <router-outlet />

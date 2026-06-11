@@ -19,4 +19,12 @@ bootstrapApplication(App, appConfig)
 
      [()] - two-way data binding syntax that combines property binding and event binding. It allows for automatic synchronization of data between the component class and the template.
 
+     Directives - special markers in the template that tell Angular to do something with a DOM element. They can be structural (like *ngIf, *ngFor) or attribute directives (like [ngClass], [ngStyle]).
+         - Component directives - directives with a template. They are the most common type of directive and are used to create components.
+         - Structural directives - directives that change the structure of the DOM. They are used to add or remove elements from the DOM based on a condition or to repeat elements based on a collection.
+               1. @if - conditionally includes a template based on the value of an expression.
+               2. @for - repeats a template for each item in a collection.
+               3. @switch - conditionally includes a template based on the value of an expression, similar to a switch statement in programming languages.
+         - Attribute directives - directives that change the appearance or behavior of an element. They are used to add or remove classes, styles, or attributes from an element.
+
   */
