@@ -59,6 +59,28 @@
   <h3 [ngStyle]="{ 'background-color': isVisible ? 'yellow' : 'orange' }">
     Person List with Index
   </h3>
+
+  <p>Today's date is {{ tdate | date:'MM/dd/yyyy' }}</p>
+
+  <p>Price: {{ 1234.56 | currency:'INR' }}</p>
+
+  <p>Uppercase: {{ 'hello world' | uppercase }}</p>
+
+  <p>Lowercase: {{ 'HELLO WORLD' | lowercase }}</p>
+
+  <p>JSON: {{ { name: 'John', age: 30 } | json }}</p>
+
+  <p>Percent: {{ 0.75 | percent }}</p>
+
+  <p>Decimal: {{ 3.14159 | number:'1.2-2' }}</p>
+
+  <p>Slice: {{ 'Angular is awesome!' | slice:0:7 }}</p>
+
+  <p>Async: {{ asyncData | async }}</p>
+
+  <p>Sqrt: {{ 16 | sqrt }}</p>
+
+  
 </main>
 
 <app-about></app-about>

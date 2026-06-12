@@ -27,4 +27,18 @@ bootstrapApplication(App, appConfig)
                3. @switch - conditionally includes a template based on the value of an expression, similar to a switch statement in programming languages.
          - Attribute directives - directives that change the appearance or behavior of an element. They are used to add or remove classes, styles, or attributes from an element.
 
+      Pipes - a way to transform data in the template. They are used to format data, such as dates, numbers, or strings, before displaying it in the template.
+            - DatePipe - formats a date value according to locale rules.
+            - CurrencyPipe - formats a number as currency according to locale rules.
+            - UpperCasePipe - transforms text to uppercase.
+            - LowerCasePipe - transforms text to lowercase.
+            - AsyncPipe - subscribes to an Observable or Promise and returns the latest value it has emitted.
+            - SlicePipe - creates a new array or string containing a subset of the elements or characters from the original array or string.
+            - JsonPipe - converts a value into its JSON representation.
+            - PercentPipe - formats a number as a percentage according to locale rules.
+            - DecimalPipe - formats a number as text with a specified number of decimal places and locale-specific separators.
+            - Custom Pipes - you can create your own custom pipes to transform data in a way that is specific to your application.
+      Types of Pipes:
+            1. Pure Pipes - pipes that are stateless and return the same output for the same input. They are only re-evaluated when their input changes.
+            2. Impure Pipes - pipes that are stateful and can return different output for the same input. They are re-evaluated on every change detection cycle, which can lead to performance issues if not used carefully.
   */

@@ -2,12 +2,13 @@ import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { About } from './about/about';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, CurrencyPipe, DatePipe, DecimalPipe, JsonPipe, LowerCasePipe, PercentPipe, SlicePipe, UpperCasePipe } from '@angular/common';
 import { Highlight } from './highlight';
+import { SqrtPipe } from './sqrt-pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, About, CommonModule, Highlight],
+  imports: [RouterOutlet, FormsModule, About, CommonModule, Highlight, DatePipe, CurrencyPipe, UpperCasePipe, LowerCasePipe, AsyncPipe, SlicePipe, JsonPipe, PercentPipe, DecimalPipe, SqrtPipe ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -27,6 +28,14 @@ export class App {
   ];
 
   today = new Date().getDay();
+
+  tdate = new Date();
+
+  asyncData = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('Data loaded asynchronously!');
+    }, 2000);
+  });
 
   imgSrc = "https://png.pngtree.com/thumb_back/fh260/background/20230411/pngtree-nature-forest-sun-ecology-image_2256183.jpg"
 
