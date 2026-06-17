@@ -1,1 +1,12 @@
-<p>product works!</p>
+<div class="product-container">
+  @for (product of products; track product.id) {
+    <div class="products">
+      <h3>{{ product.id }}</h3>
+      <h2>{{ product.name }}</h2>
+      <h5>{{ product.price }}</h5>
+      <a [routerLink]="['/product-detail', product.id]" [queryParams]="{ name: product.name }"
+        >View Details</a
+      >
+    </div>
+  }
+</div>
