@@ -1,0 +1,108 @@
+<form (ngSubmit)="submitForm()">
+  <label>
+    Name:
+    <input type="text" [formField]="contactForm.name" />
+  </label>
+
+  <label>
+    Email:
+    <input type="email" [formField]="contactForm.email" />
+  </label>
+
+  <label>
+    Message:
+    <textarea [formField]="contactForm.message"></textarea>
+  </label>
+
+  <button type="submit">Submit</button>
+</form>
+
+<!-- <form #contactForm="ngForm" (ngSubmit)="submitForm(contactForm.value)">
+  <label>
+    Name:
+    <input type="text" name="name" ngModel />
+  </label>
+
+  <label>
+    Email:
+    <input type="email" name="email" ngModel />
+  </label>
+
+  <label>
+    Message:
+    <textarea name="message" ngModel></textarea>
+  </label>
+
+  <button type="submit">Submit</button>
+
+  <pre>{{ contactForm.value | json }}</pre>
+</form> -->
+
+<!-- <form #contactForm="ngForm" (ngSubmit)="submitForm()">
+  <label>
+    Name:
+    <input type="text" name="name" [(ngModel)]="contact.name" />
+  </label>
+
+  <label>
+    Email:
+    <input type="email" name="email" [(ngModel)]="contact.email" />
+  </label>
+
+  <label>
+    Message:
+    <textarea name="message" [(ngModel)]="contact.message"></textarea>
+  </label>
+
+  <button type="submit">Submit</button>
+
+</form> -->
+
+<form [formGroup]="enquiryForm" (ngSubmit)="enquirySubmit()">
+  <label>
+    Name:
+    <input type="text" formControlName="name" />
+  </label>
+
+  <label>
+    Email:
+    <input type="email" formControlName="email" />
+  </label>
+
+  <label>
+    Message:
+    <textarea formControlName="message"></textarea>
+  </label>
+
+  <div formGroupName="address">
+    <label>
+      Street:
+      <input type="text" formControlName="street" />
+    </label>
+
+    <label>
+      City:
+      <input type="text" formControlName="city" />
+    </label>
+
+    <label>
+      ZIP:
+      <input type="text" formControlName="zip" />
+    </label>
+  </div>
+
+  <div formArrayName="skills">
+    @for (skill of skills.controls; track $index) {
+      <label>
+        Skill {{ $index + 1 }}:
+        <input type="text" [formControlName]="$index" />
+      </label>
+
+      <button type="button" (click)="removeSkill($index)">Remove Skill</button>
+    }
+
+    <button type="button" (click)="addSkill()">Add Skill</button>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

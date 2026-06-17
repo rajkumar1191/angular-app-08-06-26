@@ -5,10 +5,11 @@ import { About } from './about/about';
 import { AsyncPipe, CommonModule, CurrencyPipe, DatePipe, DecimalPipe, JsonPipe, LowerCasePipe, PercentPipe, SlicePipe, UpperCasePipe } from '@angular/common';
 import { Highlight } from './highlight';
 import { SqrtPipe } from './sqrt-pipe';
+import { Contact } from './contact/contact';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, About, CommonModule, Highlight, DatePipe, CurrencyPipe, UpperCasePipe, LowerCasePipe, AsyncPipe, SlicePipe, JsonPipe, PercentPipe, DecimalPipe, SqrtPipe ],
+  imports: [RouterOutlet, FormsModule, About, CommonModule, Highlight, DatePipe, CurrencyPipe, UpperCasePipe, LowerCasePipe, AsyncPipe, SlicePipe, JsonPipe, PercentPipe, DecimalPipe, SqrtPipe, Contact ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
