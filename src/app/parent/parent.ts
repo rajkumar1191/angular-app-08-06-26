@@ -35,7 +35,7 @@ import { ProjectedItemDirective } from '../projected-item-directive';
         </div>
       </app-card>
 
-      <app-signals-demo></app-signals-demo>
+      <!-- <app-signals-demo></app-signals-demo> -->
     </div>
   `,
 })
