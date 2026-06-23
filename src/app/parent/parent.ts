@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ChildComponent } from './../child/child';
 import { CardComponent } from '../card/card';
 import { ProjectedItemDirective } from '../projected-item-directive';
-import { SignalsDemoComponent } from '../signals-demo/signals-demo';
+// import { SignalsDemoComponent } from '../signals-demo/signals-demo';
 
 @Component({
   selector: 'app-parent',
@@ -13,7 +13,7 @@ import { SignalsDemoComponent } from '../signals-demo/signals-demo';
     ChildComponent,
     CardComponent,
     ProjectedItemDirective,
-    SignalsDemoComponent,
+    // SignalsDemoComponent,
   ],
   template: `
     <div style="padding: 20px;">
