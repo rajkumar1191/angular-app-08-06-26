@@ -1,0 +1,107 @@
+<section class="signals-demo">
+  <h2>Angular Signals Demo</h2>
+
+  <p class="intro">
+    Think of a signal like a magic lunch box. When you put a new number inside it, Angular notices
+    and updates the screen by itself.
+  </p>
+
+  <div class="shop">
+    <div>
+      <h3>Sweet Shop Example</h3>
+      <p>
+        One sweet costs <strong>{{ sweetPrice() }}</strong> rupees.
+      </p>
+      <p>
+        You have <strong>{{ pocketMoney() }}</strong> rupees.
+      </p>
+
+      <div class="counter-row">
+        <button type="button" (click)="removeSweet()">-</button>
+        <strong>{{ sweetCount() }} sweets</strong>
+        <button type="button" (click)="addSweet()">+</button>
+      </div>
+
+      <p>
+        Total bill: <strong>{{ totalBill() }}</strong> rupees
+      </p>
+      <p>
+        Money left: <strong>{{ moneyLeft() }}</strong> rupees
+      </p>
+      <p class="status">{{ shoppingMessage() }}</p>
+
+      <button type="button" (click)="resetShop()">Reset Example</button>
+    </div>
+
+    <div class="code-card">
+      <h3>Same idea in code</h3>
+      <pre><code>sweetCount = signal(1);
+sweetPrice = signal(5);
+
+totalBill = computed(() =>
+  this.sweetCount() * this.sweetPrice()
+);</code></pre>
+    </div>
+  </div>
+
+  <div class="lesson-grid">
+    <article>
+      <h3>1. signal()</h3>
+      <p>
+        A signal stores a value. Here, <strong>sweetCount</strong> remembers how many sweets you
+        picked.
+      </p>
+      <p>
+        To read it, we call it like a function:
+        <code>sweetCount()</code>.
+      </p>
+    </article>
+
+    <article>
+      <h3>2. set()</h3>
+      <p>
+        <code>set()</code> replaces the old value with a new value. It is like saying, "Now the box
+        has exactly this number."
+      </p>
+      <pre><code>this.sweetCount.set(1);</code></pre>
+    </article>
+
+    <article>
+      <h3>3. update()</h3>
+      <p>
+        <code>update()</code> changes the value using the old value. The plus button uses it to add
+        one more sweet.
+      </p>
+      <pre><code>this.sweetCount.update(count => count + 1);</code></pre>
+    </article>
+
+    <article>
+      <h3>4. computed()</h3>
+      <p>
+        A computed signal is a smart answer. Angular recalculates it when the signals it uses
+        change.
+      </p>
+      <p>If sweets go from 1 to 2, the total bill updates automatically.</p>
+    </article>
+
+    <article>
+      <h3>5. effect()</h3>
+      <p>
+        An effect runs when a signal it reads changes. This demo writes a small message in the
+        browser console whenever the sweet count changes.
+      </p>
+      <pre><code>effect(() => &#123;
+  console.log(this.sweetCount());
+&#125;);</code></pre>
+    </article>
+
+    <article>
+      <h3>Easy memory trick</h3>
+      <p>
+        <strong>signal</strong> remembers, <strong>set</strong> replaces,
+        <strong>update</strong> changes, <strong>computed</strong> calculates, and
+        <strong>effect</strong> reacts.
+      </p>
+    </article>
+  </div>
+</section>

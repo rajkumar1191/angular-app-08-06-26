@@ -1,9 +1,10 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChildComponent } from './../child/child';
 import { CardComponent } from '../card/card';
 import { ProjectedItemDirective } from '../projected-item-directive';
-// import { SignalsDemoComponent } from '../signals-demo/signals-demo';
+import { SignalsDemoComponent } from '../signals-demo/signals-demo';
+import { UserService } from '../user-service';
 
 @Component({
   selector: 'app-parent',
@@ -13,7 +14,7 @@ import { ProjectedItemDirective } from '../projected-item-directive';
     ChildComponent,
     CardComponent,
     ProjectedItemDirective,
-    // SignalsDemoComponent,
+    SignalsDemoComponent,
   ],
   template: `
     <div style="padding: 20px;">
@@ -22,7 +23,11 @@ import { ProjectedItemDirective } from '../projected-item-directive';
       <button (click)="changeTitle()">Change Title Text</button>
       <button (click)="toggleChild()">Toggle Child Component Visibility</button>
 
-      <app-child *ngIf="showChild" [title]="parentTitle" (outputData)="captureChildData($event)"></app-child>
+      <app-child
+        *ngIf="showChild"
+        [title]="parentTitle"
+        (outputData)="captureChildData($event)"
+      ></app-child>
 
       <button (click)="updateProjectedText()">Update Text</button>
 
@@ -35,15 +40,32 @@ import { ProjectedItemDirective } from '../projected-item-directive';
         </div>
       </app-card>
 
-      <!-- <app-signals-demo></app-signals-demo> -->
+      <app-signals-demo></app-signals-demo>
     </div>
   `,
 })
-export class ParentComponent {
+export class ParentComponent implements OnInit {
   parentTitle: string = 'Initial Title';
   showChild: boolean = true;
 
   dynamicText: string = 'Hello World';
+
+  constructor(private user: UserService) {}
+
+  ngOnInit(): void {
+    this.fetchUsers();
+  }
+
+  fetchUsers() {
+    this.user.getUsers().subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
 
   updateProjectedText(): void {
     this.dynamicText = 'Updated Text at ' + new Date().toLocaleTimeString();
