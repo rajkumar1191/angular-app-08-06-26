@@ -1,1 +1,7 @@
 <p>about works!</p>
+
+<h3>User Count: {{ userCount() }}</h3>
+
+@for (user of userData(); track $index) {
+  <h5>{{ user.id }}</h5>
+}
